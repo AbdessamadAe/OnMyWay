@@ -1,4 +1,4 @@
-# on_my_way
+# OnMyWay
 
 A new Flutter project.
 

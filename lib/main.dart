@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 Future <void> main() async {
   debugPrint('Starting app...');
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
   debugPrint('App started');
   runApp(MyApp());
 }

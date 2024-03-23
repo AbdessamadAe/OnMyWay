@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
             children: [
               Expanded(
                 child: Container(
-                  width: 399, // Set the width of the container here
+                  width: 399,
                   height: 15,
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -48,7 +48,7 @@ class MyHomePage extends StatelessWidget {
                         Color(0x43867bc7),
                         Color(0x00756ab6)
                       ],
-                      // stops: <double>[0, 1, 1],
+                      
                     ),
                   ),
                   child: Stack(

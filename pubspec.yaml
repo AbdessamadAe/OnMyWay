@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -39,7 +39,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: Assets/images/logo2.png
+  adaptive_icon_foreground: Assets/images/logo0.png
+  adaptive_icon_background: "#AD88C6"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -69,11 +76,20 @@ flutter:
     - Assets/images/image3.jpg
     - Assets/images/image4.jpg
     - Assets/images/image5.jpg
-    - Assets/images/image6.jpg
+    - Assets/images/image6.png
+    - Assets/images/image6.jpeg
     - Assets/images/image7.jpg
     - Assets/images/image8.jpg
     - Assets/images/logo1.png
     - Assets/images/logo2.png
+    - Assets/images/logo0.png
+
+
+fonts:
+  - family: PollerOne
+    fonts:
+      - asset: assets/fonts/PollerOne.ttf
+        weight: 700
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

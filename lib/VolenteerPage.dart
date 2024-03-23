@@ -55,14 +55,14 @@ class My2Page extends StatelessWidget {
             ),
 //////////////////////////
             Container(
-              // autogrouperap4iPu5 (W2Qstn5G5RcFCX6QxJdZqV)
+              
               padding: EdgeInsets.fromLTRB(16, 19, 12, 0),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    // group59Q1Z (2163:181)
+                    
                     margin: EdgeInsets.fromLTRB(0, 0, 3, 18),
                     padding: EdgeInsets.fromLTRB(0, 10.5, 0, 10),
                     height: 218,
@@ -78,10 +78,10 @@ class My2Page extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment
-                                .start, // Aligns children to the start (left)
+                                .start,
                             children: [
                               Container(
-                                margin: EdgeInsets.fromLTRB(150, 10, 0, 0), // Adjust bottom margin for 'AUI'
+                                margin: EdgeInsets.fromLTRB(150, 10, 0, 0), 
                                 child: Text(
                                   'AUI',
                                   textAlign: TextAlign.center,
@@ -99,7 +99,6 @@ class My2Page extends StatelessWidget {
                                   Container(
                                     margin:
                                         EdgeInsets.fromLTRB(15, 90, 118, 12),
-                                    // Adjust right margin for spacing between '# VOLUNTEERS' and '# BLIND'
                                     child: Text(
                                       '# VOLUNTEERS',
                                       textAlign: TextAlign.center,
@@ -115,7 +114,7 @@ class My2Page extends StatelessWidget {
                                   Container(
                                     margin: EdgeInsets.fromLTRB(12, 90, 0, 12),
                                     child: Text(
-                                      '# BLIND',//textAlign: TextAlign.center,
+                                      '# BLIND',
                                       style: TextStyle(
                                         fontFamily: 'Quantico',
                                         fontSize: 18,
@@ -147,7 +146,7 @@ class My2Page extends StatelessWidget {
               ),
             ),
             Container(
-              // yello container
+              // yellow container
 
               padding: EdgeInsets.fromLTRB(16, 0, 12, 0),
               width: double.infinity,
@@ -187,7 +186,7 @@ class My2Page extends StatelessWidget {
     );
   }
 }
-
+//menu needs to be fixed so that it shows up on the app page
 class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;

@@ -16,6 +16,24 @@ class User {
   });
 }
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    User dummyUser = User(
+      firstName: 'John',
+      lastName: 'Doe',
+      phoneNumber: '123-456-7890',
+      image: 'Assets/images/image0.jpg',
+      email: 'john.doe@example.com',
+    );
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ProfileScreen(user: dummyUser),
+    );
+  }
+}
+
 class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
@@ -168,28 +186,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         selectedIndex: _selectedIndex,
         onItemSelected: _onItemTapped,
       ),
-    );
-  }
-}
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final User dummyUser = User(
-      firstName: 'John',
-      lastName: 'Doe',
-      phoneNumber: '123-456-7890',
-      image: 'Assets/images/image0.jpg',
-      email: 'john.doe@example.com',
-    );
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ProfileScreen(user: dummyUser),
     );
   }
 }

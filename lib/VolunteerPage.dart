@@ -1,19 +1,24 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
+//TODO:VolunteerPage()
+
 
 import 'package:flutter/material.dart';
 
-void main() { //comment this later
-  runApp(OnMYWay());
-}
+// void main() { //comment this later
+//   runApp(OnMYWay());
+// }
 
 
 class OnMYWay extends StatelessWidget {
+  const OnMYWay({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Home Page',
-      debugShowCheckedModeBanner: false,
       home: VolunteerPage(),
+      title: 'Volunteer Page',
+      debugShowCheckedModeBanner: false,
+      
     );
   }
 }
@@ -51,6 +56,8 @@ class OnMYWay extends StatelessWidget {
 //   void setState(Null Function() param0) {}
 // }
 class VolunteerPage extends StatelessWidget {
+  const VolunteerPage({super.key});
+
   @override
   Widget build(BuildContext context) {
 
@@ -91,14 +98,12 @@ class VolunteerPage extends StatelessWidget {
             ),
 //////////////////////////
             Container(
-              // autogrouperap4iPu5 (W2Qstn5G5RcFCX6QxJdZqV)
               padding: EdgeInsets.fromLTRB(16, 19, 12, 0),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    // group59Q1Z (2163:181)
                     margin: EdgeInsets.fromLTRB(0, 0, 3, 18),
                     padding: EdgeInsets.fromLTRB(0, 10.5, 0, 10),
                     height: 218,
@@ -113,8 +118,7 @@ class VolunteerPage extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment
-                                .start, // Aligns children to the start (left)
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
                                 margin: EdgeInsets.fromLTRB(150, 10, 0, 0), // Adjust bottom margin for 'AUI'
@@ -226,7 +230,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
 
-  CustomBottomNavigationBar({
+  const CustomBottomNavigationBar({super.key,
     required this.selectedIndex,
     required this.onItemSelected,
   });

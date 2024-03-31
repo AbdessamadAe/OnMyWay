@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'ChoosePage.dart';
 import 'VolunteerPage.dart';
@@ -14,7 +15,13 @@ class OnMyWay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user;
+    var user = User(
+      firstName: 'John',
+      lastName: 'Doe',
+      phoneNumber: '1234567890',
+      image: 'path/to/image.jpg',
+      email: 'j.Doe@aui.ma'
+    );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'OnMyWay',

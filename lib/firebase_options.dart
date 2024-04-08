@@ -17,15 +17,24 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,39 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDkX2WmFgrtlTk1LlVjuUSh70LSAJxNGkw',
-    appId: '1:622582943315:web:9dc7191f17126a9b1c40a6',
-    messagingSenderId: '622582943315',
-    projectId: 'onmywayapp-1a353',
-    authDomain: 'onmywayapp-1a353.firebaseapp.com',
-    storageBucket: 'onmywayapp-1a353.appspot.com',
-    measurementId: 'G-9N7WMBVXC8',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBj3b89APjLCKtslY-xfav4v8pTaBS6g9s',
     appId: '1:622582943315:android:20d983f18e441d7c1c40a6',
     messagingSenderId: '622582943315',
     projectId: 'onmywayapp-1a353',
     storageBucket: 'onmywayapp-1a353.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBGtcGKoYJJfcc-BSotq_XLmXbuZEg9-oo',
-    appId: '1:622582943315:ios:18b7ba2b56947ed91c40a6',
-    messagingSenderId: '622582943315',
-    projectId: 'onmywayapp-1a353',
-    storageBucket: 'onmywayapp-1a353.appspot.com',
-    iosBundleId: 'com.example.onMyWay',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBGtcGKoYJJfcc-BSotq_XLmXbuZEg9-oo',
-    appId: '1:622582943315:ios:833c87c41a69cf271c40a6',
-    messagingSenderId: '622582943315',
-    projectId: 'onmywayapp-1a353',
-    storageBucket: 'onmywayapp-1a353.appspot.com',
-    iosBundleId: 'com.example.onMyWay.RunnerTests',
   );
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// void main() { //comment this later
+//   runApp(const MyApp());
+// }
+
 class User {
   final String firstName;
   final String lastName;
@@ -17,6 +21,8 @@ class User {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     User dummyUser = User(
@@ -38,7 +44,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
 
-  CustomBottomNavigationBar({
+  const CustomBottomNavigationBar({super.key, 
     required this.selectedIndex,
     required this.onItemSelected,
   });
@@ -70,10 +76,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
         ),
       ],
       currentIndex: selectedIndex,
-      selectedItemColor: Color.fromARGB(255, 159, 116, 198),
+      selectedItemColor: const Color.fromARGB(255, 159, 116, 198),
       onTap: onItemSelected,
       type: BottomNavigationBarType.shifting,
-      unselectedItemColor: Color.fromARGB(255, 15, 15, 15),
+      unselectedItemColor: const Color.fromARGB(255, 15, 15, 15),
       elevation: 10.0,
       backgroundColor: Colors.white,
     );
@@ -105,7 +111,7 @@ class MenuItem extends StatelessWidget {
 class ProfileScreen extends StatefulWidget {
   final User user;
 
-  ProfileScreen({required this.user});
+  const ProfileScreen({super.key, required this.user});
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -114,10 +120,10 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
-    Text('Home Screen', textAlign: TextAlign.center),
-    Text('Search', textAlign: TextAlign.center),
-    Text('School Screen', textAlign: TextAlign.center),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const Text('Home Screen', textAlign: TextAlign.center),
+    const Text('Search', textAlign: TextAlign.center),
+    const Text('School Screen', textAlign: TextAlign.center),
   ];
 
   void _onItemTapped(int index) {
@@ -132,33 +138,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         title: Text('Account of ${widget.user.firstName}'),
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             CircleAvatar(
               radius: 50,
               backgroundImage: NetworkImage(widget.user.image),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               '${widget.user.firstName} ${widget.user.lastName}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              '${widget.user.phoneNumber}',
-              style: TextStyle(
+              widget.user.phoneNumber,
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MenuItem(
               icon: Icons.person,
               title: 'Profile',

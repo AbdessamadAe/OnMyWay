@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'ChoosePage.dart';
 import 'VolunteerPage.dart';
 import 'Profile.dart';
-
+import 'BlindPage.dart';
+import 'LogInPage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const OnMyWay());
 }
-class MyApp extends StatelessWidget {
+
+class OnMyWay extends StatelessWidget {
+  const OnMyWay({super.key});
+
   @override
   Widget build(BuildContext context) {
     var user = User(
@@ -20,13 +24,23 @@ class MyApp extends StatelessWidget {
     );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Your App Title',
+      title: 'OnMyWay',
       initialRoute: '/',
       routes: {
-        '/': (context) => MyHomePage(), // FirstPage route
-        '/second': (context) => VolunteerPage(), // SecondPage route
-        '/third': (context) => ProfileScreen(user: user), // ThirdPage route
+        '/': (context) => const LogInPage(),
+        '/second': (context) => const MyHomePage(),
+        '/third': (context) => const VolunteerPage(),
+        '/fourth': (context) => const BlindPage(),
+        '/fifth': (context) => ProfileScreen(user: user),
       },
+      theme: ThemeData(
+        // the buttons turned white for some reason so this fixed the issue
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(0, 160, 143, 254),
+          ),
+        ),
+      ),
     );
   }
 }

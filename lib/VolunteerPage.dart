@@ -7,7 +7,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 // void main() { //comment this later
@@ -67,73 +66,7 @@ class VolunteerPage extends StatefulWidget {
 }
 
 class _VolunteerPageState extends State<VolunteerPage> {
-  String? mtoken = '';
-  late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  // This is where you initialize your state
-  @override
-  void initState() {
-    super.initState();
-    requestPermission();
-    getToken();
-    initInfo();
-  }
-
-  void requestPermission() async {
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-    NotificationSettings settings = await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-
-    print('User granted permission: ${settings.authorizationStatus}');
-
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('User granted permission');
-    } else {
-      print('User declined or has not accepted permission');
-    }
-  }
-
-  void saveToken(String? token) async {
-    await FirebaseFirestore.instance.collection("UserTokens").doc("Voulunteer1").set({
-      "token": token,
-    });
-    print(token);
-  }
-
-  void getToken() async {
-    await FirebaseMessaging.instance.getToken().then((token) {
-      setState(() {
-        mtoken = token;
-        print("My Token: $mtoken");
-      });
-      saveToken(token);
-    });
-  }
-
-  void initInfo () async {
-    var androidInitilize = new AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initilizationsSettings = new InitializationSettings(android: androidInitilize);
-    flutterLocalNotificationsPlugin.initialize(initilizationsSettings, onDidReceiveNotificationResponse: (NotificationResponse) async {});
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      print("...................onMessage: $message...................");
-      print("...................onMessage: ${message.notification!.title}...................");
-      print("...................onMessage: ${message.notification!.body}...................");
-      BigTextStyleInformation bigTextStyleInformation = BigTextStyleInformation(message.notification!.body.toString(), htmlFormatBigText: true, contentTitle: message.notification!.title);
-    AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails('OnMyWay', 'OnMyWay', importance: Importance.max, priority: Priority.high, styleInformation: bigTextStyleInformation);
-    NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics);
-    await flutterLocalNotificationsPlugin.show(0, message.notification!.title, message.notification!.body, platformChannelSpecifics, payload: 'Default_Sound');
-    });
-  }
   
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

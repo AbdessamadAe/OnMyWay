@@ -1,13 +1,17 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 //TODO:VolunteerPage()
 
-
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
 
 // void main() { //comment this later
 //   runApp(OnMYWay());
 // }
-
 
 class OnMYWay extends StatelessWidget {
   const OnMYWay({super.key});
@@ -18,7 +22,6 @@ class OnMYWay extends StatelessWidget {
       home: VolunteerPage(),
       title: 'Volunteer Page',
       debugShowCheckedModeBanner: false,
-      
     );
   }
 }
@@ -52,15 +55,20 @@ class OnMYWay extends StatelessWidget {
 //       ),
 //     );
 //   }
-  
+
 //   void setState(Null Function() param0) {}
 // }
-class VolunteerPage extends StatelessWidget {
+class VolunteerPage extends StatefulWidget {
   const VolunteerPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  _VolunteerPageState createState() => _VolunteerPageState();
+}
 
+class _VolunteerPageState extends State<VolunteerPage> {
+  
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -121,7 +129,8 @@ class VolunteerPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                margin: EdgeInsets.fromLTRB(150, 10, 0, 0), // Adjust bottom margin for 'AUI'
+                                margin: EdgeInsets.fromLTRB(150, 10, 0,
+                                    0), // Adjust bottom margin for 'AUI'
                                 child: Text(
                                   'AUI',
                                   textAlign: TextAlign.center,
@@ -155,7 +164,7 @@ class VolunteerPage extends StatelessWidget {
                                   Container(
                                     margin: EdgeInsets.fromLTRB(8, 90, 0, 12),
                                     child: Text(
-                                      '# BLIND',//textAlign: TextAlign.center,
+                                      '# BLIND', //textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: 'Quantico',
                                         fontSize: 18,
@@ -230,7 +239,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
 
-  const CustomBottomNavigationBar({super.key,
+  const CustomBottomNavigationBar({
+    super.key,
     required this.selectedIndex,
     required this.onItemSelected,
   });

@@ -1,6 +1,6 @@
 {
-    "name": "on_my_way",
-    "short_name": "on_my_way",
+    "name": "OnMyWay",
+    "short_name": "OnMyWay",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

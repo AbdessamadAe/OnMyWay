@@ -1,18 +1,22 @@
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'ChoosePage.dart';
 import 'VolunteerPage.dart';
 import 'Profile.dart';
 import 'BlindPage.dart';
-import 'LogInPage.dart';import 'package:firebase_core/firebase_core.dart';
+import 'LogInPage.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future <void> main() async {
   debugPrint('Starting app...');
   WidgetsFlutterBinding.ensureInitialized();
-  /* await Firebase.initializeApp(
+  await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform
-    ); */
+    );
+  await FirebaseMessaging.instance.getInitialMessage();
   debugPrint('App started');
   runApp(const OnMyWay());
 }
@@ -34,9 +38,9 @@ class OnMyWay extends StatelessWidget {
       title: 'OnMyWay',
       initialRoute: '/',
       routes: {
-        '/': (context) => const LogInPage(),
+        '/': (context) => const VolunteerPage(),
         '/second': (context) => const MyHomePage(),
-        '/third': (context) => const VolunteerPage(),
+        '/third': (context) => const LogInPage(),
         '/fourth': (context) => const BlindPage(),
         '/fifth': (context) => ProfileScreen(user: user),
       },

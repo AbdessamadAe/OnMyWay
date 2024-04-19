@@ -8,7 +8,11 @@ import 'BlindPage.dart';
 import 'LogInPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+
+Future<void> _forebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  debugPrint('Handling a background message: ${message.messageId}');
+}
 
 Future <void> main() async {
   debugPrint('Starting app...');
@@ -17,6 +21,7 @@ Future <void> main() async {
       options: DefaultFirebaseOptions.currentPlatform
     );
   await FirebaseMessaging.instance.getInitialMessage();
+  FirebaseMessaging.onBackgroundMessage(_forebaseMessagingBackgroundHandler);
   debugPrint('App started');
   runApp(const OnMyWay());
 }
@@ -38,10 +43,10 @@ class OnMyWay extends StatelessWidget {
       title: 'OnMyWay',
       initialRoute: '/',
       routes: {
-        '/': (context) => const VolunteerPage(),
+        '/': (context) => const BlindPage(),
         '/second': (context) => const MyHomePage(),
         '/third': (context) => const LogInPage(),
-        '/fourth': (context) => const BlindPage(),
+        '/fourth': (context) => const VolunteerPage(),
         '/fifth': (context) => ProfileScreen(user: user),
       },
       theme: ThemeData(

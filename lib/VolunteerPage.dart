@@ -138,7 +138,7 @@ class VolunteerPage extends StatelessWidget {
                                 children: [
                                   Container(
                                     margin:
-                                        EdgeInsets.fromLTRB(15, 90, 118, 12),
+                                    EdgeInsets.fromLTRB(15, 90, 44, 12),
                                     // Adjust right margin for spacing between '# VOLUNTEERS' and '# BLIND'
                                     child: Text(
                                       '# VOLUNTEERS',
@@ -151,7 +151,16 @@ class VolunteerPage extends StatelessWidget {
                                         color: Color(0xff000000),
                                       ),
                                     ),
-                                  ),
+                                  ),Container(
+                                  margin: EdgeInsets.fromLTRB(0, 14, 60, 5),
+                                  decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2),
+                                  color: Color.fromARGB(255, 64, 54, 96),),
+                                  width: 5, // Adjust the width as needed
+                                  height: 115, // Adjust the height as needed
+                                  
+                                ),
+                                
                                   Container(
                                     margin: EdgeInsets.fromLTRB(8, 90, 0, 12),
                                     child: Text(

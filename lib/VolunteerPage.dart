@@ -4,9 +4,9 @@
 
 import 'package:flutter/material.dart';
 
-// void main() { //comment this later
-//   runApp(OnMYWay());
-// }
+void main() { //comment this later
+  runApp(OnMYWay());
+}
 
 
 class OnMYWay extends StatelessWidget {

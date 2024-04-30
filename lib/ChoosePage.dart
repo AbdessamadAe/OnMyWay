@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 //TODO: HOMEPAGE
-import 'package:OnMyWay/LogInPage.dart';
+import 'package:OnMyWay/VolunteerPage.dart';
 import 'package:OnMyWay/BlindPage.dart';
 import 'package:flutter/material.dart';
 
@@ -187,7 +187,7 @@ class MyHomePage extends StatelessWidget {
                                 
                                 MaterialPageRoute(
                                   
-                                  builder: (context) => LogInPage(),
+                                  builder: (context) => VolunteerPage(),
                                 ),
                               );
                             },

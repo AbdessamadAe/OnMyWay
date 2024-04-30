@@ -27,8 +27,8 @@ class OnMyWay extends StatelessWidget {
       title: 'OnMyWay',
       initialRoute: '/',
       routes: {
-        '/': (context) => const LogInPage(),
-        '/second': (context) => const MyHomePage(),
+        '/': (context) => const MyHomePage(),
+        '/second': (context) => const LogInPage(),
         '/third': (context) => const VolunteerPage(),
         '/fourth': (context) => const BlindPage(),
         '/fifth': (context) => ProfileScreen(user: user),

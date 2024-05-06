@@ -14,16 +14,16 @@ class OnMyWay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Color.fromARGB(0, 160, 143, 254), // Set the desired button background color
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(
+                0, 160, 143, 254), // Set the desired button background color
+          ),
+        ),
       ),
-    ),
-  ),
-    home: MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -34,7 +34,14 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-
+    ThemeData(
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color.fromARGB(
+              0, 160, 143, 254), // Set the desired button background color
+        ),
+      ),
+    );
     return Scaffold(
       body: Container(
         height: screenSize.height,
@@ -145,7 +152,7 @@ class MyHomePage extends StatelessWidget {
                                 ),
                               );
                             },
-                        //
+                            //
                             child: ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
@@ -173,9 +180,9 @@ class MyHomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                          ),
-                        ),
-                          SizedBox(height: 12),
+                      ),
+                    ),
+                    SizedBox(height: 12),
 //888888888888888888888888888888888888 I would like to volunteer button 8888888888888888888888888888888888888888888888888888888888
                     Expanded(
                       child: Container(
@@ -193,10 +200,19 @@ class MyHomePage extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(17),
                         ),
-                          child: Semantics(
-                            label: 'I would like to volunteer button',
-                            button: true,
-                            onTap: () {
+                        child: Semantics(
+                          label: 'I would like to volunteer button',
+                          button: true,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VolunteerPage(),
+                              ),
+                            );
+                          },
+                          child: ElevatedButton(
+                            onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -204,32 +220,24 @@ class MyHomePage extends StatelessWidget {
                                 ),
                               );
                             },
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => VolunteerPage(),
-                                  ),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0, // Set elevation to 0 or adjust as needed
-                              ),
-                              child: Text(
-                                'I would like to volunteer',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'Inria Serif',
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.1975,
-                                  letterSpacing: 1.2,
-                                  color: Color(0xff000000),
-                                ),
+                            style: ElevatedButton.styleFrom(
+                              elevation:
+                                  0, // Set elevation to 0 or adjust as needed
+                            ),
+                            child: Text(
+                              'I would like to volunteer',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'Inria Serif',
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                height: 1.1975,
+                                letterSpacing: 1.2,
+                                color: Color(0xff000000),
                               ),
                             ),
                           ),
+                        ),
 //8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
                       ),
                     ),

@@ -2,6 +2,8 @@
 //TODO:VolunteerPage()
 
 
+import 'package:OnMyWay/ChoosePage.dart';
+import 'package:OnMyWay/Profile.dart';
 import 'package:flutter/material.dart';
 
 void main() { //comment this later
@@ -20,41 +22,11 @@ class OnMYWay extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       
     );
+    
   }
 }
 
-// class Menu extends StatelessWidget {
-//   int _selectedIndex = 0;
 
-//   final List<Widget> _widgetOptions = <Widget>[
-//     Text('Home'),
-//     Text('Help'),
-//     Text('School'),
-//     Text('Community'),
-//     Text('Account'),
-//   ];
-
-//   void _onItemSelected(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: _widgetOptions.elementAt(_selectedIndex),
-//       ),
-//       bottomNavigationBar: CustomBottomNavigationBar(
-//         selectedIndex: _selectedIndex,
-//         onItemSelected: _onItemSelected,
-//       ),
-//     );
-//   }
-  
-//   void setState(Null Function() param0) {}
-// }
 class VolunteerPage extends StatelessWidget {
   const VolunteerPage({super.key});
 
@@ -228,6 +200,7 @@ class VolunteerPage extends StatelessWidget {
                                 Text(
                                   'Volunteer of the Month!!',
                                   style: TextStyle(
+                                    fontStyle: FontStyle.italic,
                                     fontFamily: 'Poppins',
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
@@ -259,20 +232,82 @@ class VolunteerPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ),bottomNavigationBar: CustomBottomNavigationBar()
     );
   }
 }
 
-class CustomBottomNavigationBar extends StatelessWidget {
-  final int selectedIndex;
-  final Function(int) onItemSelected;
 
-  const CustomBottomNavigationBar({super.key,
-    required this.selectedIndex,
-    required this.onItemSelected,
-  });
+class MenuItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final VoidCallback onTap;
 
+  const MenuItem({
+    Key? key,
+    required this.icon,
+    required this.title,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      onTap: onTap,
+    );
+  }
+}
+
+class CustomBottomNavigationBar extends StatefulWidget {
+  @override
+  _CustomBottomNavigationBarState createState() =>
+      _CustomBottomNavigationBarState();
+}
+class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+  int _selectedIndex = 0;
+
+  void _onItemSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    // Perform actions based on the selected index
+    switch (_selectedIndex) {
+      case 0:
+        // Navigate to home screen or perform related action
+        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+            );
+        break;
+      case 1:
+        // Navigate to help screen or perform related action
+        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen(user: user)),
+            );
+        break;
+      case 2:
+        // Navigate to school screen or perform related action
+        break;
+      case 3:
+        // Navigate to community screen or perform related action
+        break;
+      case 4:
+        // Navigate to account screen or perform related action
+        break;
+    }
+  }
+var user = User(
+      firstName: 'John',
+      lastName: 'Doe',
+      phoneNumber: '1234567890',
+      image: 'path/to/image.jpg',
+      email: 'j.Doe@aui.ma'
+    );
+//888888888888888888888888888888 Menu 888888888888888888
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -298,35 +333,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
           label: 'Account',
         ),
       ],
-      currentIndex: selectedIndex,
+      currentIndex: _selectedIndex,
       selectedItemColor: Color.fromARGB(255, 159, 116, 198),
-      onTap: onItemSelected,
+      onTap: _onItemSelected,
       type: BottomNavigationBarType.shifting,
       unselectedItemColor: Color.fromARGB(255, 15, 15, 15),
       elevation: 10.0,
       backgroundColor: Colors.white,
-    );
-  }
-}
-
-class MenuItem extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final VoidCallback onTap;
-
-  const MenuItem({
-    Key? key,
-    required this.icon,
-    required this.title,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      onTap: onTap,
     );
   }
 }

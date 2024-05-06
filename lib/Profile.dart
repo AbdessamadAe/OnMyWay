@@ -44,7 +44,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
 
-  const CustomBottomNavigationBar({super.key, 
+  const CustomBottomNavigationBar({super.key,
     required this.selectedIndex,
     required this.onItemSelected,
   });

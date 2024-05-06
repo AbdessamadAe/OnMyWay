@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-// void main() { //comment this later
-//   runApp(const MyApp());
-// }
+void main() { //comment this later
+  runApp(const MyApp());
+}
 
 class User {
   final String firstName;
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       firstName: 'John',
       lastName: 'Doe',
       phoneNumber: '123-456-7890',
-      image: 'Assets/images/image0.jpg',
+      image: 'Assets/images/image1.jpg',
       email: 'john.doe@example.com',
     );
 

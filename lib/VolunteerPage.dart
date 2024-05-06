@@ -138,7 +138,7 @@ class VolunteerPage extends StatelessWidget {
                                 children: [
                                   Container(
                                     margin:
-                                    EdgeInsets.fromLTRB(15, 90, 41, 12),
+                                    EdgeInsets.fromLTRB(26, 90, 32, 12),
                                     // Adjust right margin for spacing between '# VOLUNTEERS' and '# BLIND'
                                     child: Text(
                                       '# VOLUNTEERS',
@@ -152,7 +152,7 @@ class VolunteerPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),Container(
-                                  margin: EdgeInsets.fromLTRB(0, 14, 60, 5),
+                                  margin: EdgeInsets.fromLTRB(0, 14, 40, 5),
                                   decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(2),
                                   color: Color.fromARGB(255, 81, 69, 120),),
@@ -162,7 +162,7 @@ class VolunteerPage extends StatelessWidget {
                                 ),
                                 
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(8, 90, 0, 12),
+                                    margin: EdgeInsets.fromLTRB(5, 90, 0, 12),
                                     child: Text(
                                       '# BLIND',//textAlign: TextAlign.center,
                                       style: TextStyle(
@@ -237,7 +237,7 @@ class VolunteerPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10), // Add some spacing between the two texts
                                 Text(
-                                  '# Student name ',
+                                  'Student name (--) ',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 26,

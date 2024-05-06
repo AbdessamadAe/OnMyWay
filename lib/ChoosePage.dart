@@ -164,6 +164,7 @@ class MyHomePage extends StatelessWidget {
                               },
                               style: ElevatedButton.styleFrom(
                                 elevation: 0,
+                                backgroundColor: Color.fromARGB(0, 160, 143, 254),
                               ),
                               child: Text(
                                 'I need visual assistance',
@@ -221,8 +222,8 @@ class MyHomePage extends StatelessWidget {
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              elevation:
-                                  0, // Set elevation to 0 or adjust as needed
+                              elevation:0,
+                              backgroundColor: Color.fromARGB(0, 160, 143, 254), // Set elevation to 0 or adjust as needed
                             ),
                             child: Text(
                               'I would like to volunteer',

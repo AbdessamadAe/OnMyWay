@@ -279,15 +279,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         // Navigate to home screen or perform related action
         Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHomePage()),
+              MaterialPageRoute(builder: (context) => VolunteerPage()),
             );
         break;
       case 1:
         // Navigate to help screen or perform related action
-        Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProfileScreen(user: user)),
-            );
+        
         break;
       case 2:
         // Navigate to school screen or perform related action
@@ -297,7 +294,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         break;
       case 4:
         // Navigate to account screen or perform related action
-        break;
+        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen(user: user)),
+            );
+          break;
     }
   }
 var user = User(

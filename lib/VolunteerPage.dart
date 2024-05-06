@@ -202,7 +202,7 @@ class VolunteerPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 0, 3, 18),
+                    margin: EdgeInsets.fromLTRB(0, 5, 3, 18),
                     padding: EdgeInsets.fromLTRB(0, 10.5, 30.5, 9),
                     height: 140,
                     decoration: BoxDecoration(
@@ -213,15 +213,44 @@ class VolunteerPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              8, 0, 30.5, 24), // Adjust padding as needed
+                          padding: EdgeInsets.fromLTRB(6, 0, 0, 24), // Adjust padding as needed
                           child: CircleAvatar(
                             backgroundColor: Color.fromARGB(71, 219, 225, 134),
                             backgroundImage:
                                 AssetImage('Assets/images/image6.png'),
                             radius: 45, // Adjust the radius here
                           ),
-                        ),
+                        ),Container(
+                            margin: EdgeInsets.fromLTRB(2, 8, 0, 30),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Volunteer of the Month!!',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.43,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
+                                SizedBox(height: 10), // Add some spacing between the two texts
+                                Text(
+                                  '# Student name ',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.43,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                        
                       ],
                     ),
                   ),

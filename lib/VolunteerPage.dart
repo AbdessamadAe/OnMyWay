@@ -279,7 +279,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         // Navigate to home screen or perform related action
         Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => VolunteerPage()),
+              MaterialPageRoute(builder: (context) => MyHomePage()),
             );
         break;
       case 1:

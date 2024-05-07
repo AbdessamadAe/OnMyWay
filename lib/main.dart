@@ -30,7 +30,7 @@ class OnMyWay extends StatelessWidget {
         '/': (context) => const MyHomePage(),
         '/second': (context) => const LogInPage(),
         '/third': (context) => const VolunteerPage(),
-        '/fourth': (context) => const BlindPage(),
+        '/fourth': (context) =>  BlindPage(),
         '/fifth': (context) => ProfileScreen(user: user),
       },
       theme: ThemeData(

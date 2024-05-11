@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,6 +28,7 @@ class BlindPage extends StatefulWidget {
 
 class _BlindPageState extends State<BlindPage> {
   bool _isElevated = true;
+  final player = AudioCache();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,18 +67,25 @@ class _BlindPageState extends State<BlindPage> {
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(
-                          20), // Adjust padding as needed for the text
+                          20),
+                          child: GestureDetector(
+                      onTap: () {
+                        player.load('audio/my-audio.wav');
+                        //player.play('audio/my-audio.wav');
+                      },
                       child: Center(
                         child: Text(
                           !_isElevated
                               ? 'Sent!'
-                              : 'Send Notification', // Button text
+                              : 'Send Notification',
+                              // Button text
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w700,
                             color: const Color.fromARGB(255, 81, 81, 81),
                           ), // Text style
                         ),
+                        
                       ),
                     ),
                   ),
@@ -84,6 +93,6 @@ class _BlindPageState extends State<BlindPage> {
             )
             
             
-);
+));
   }
 }

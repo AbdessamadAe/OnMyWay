@@ -1,22 +1,39 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
-import 'package:firebase_analytics/firebase_analytics.dart';
+
+void main() {
+  runApp(OnMyWay());
+}
+
+class OnMyWay extends StatelessWidget {
+  const OnMyWay({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: BlindPage(),
+      title: 'BlindInterface',
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
 
 class BlindPage extends StatefulWidget {
-  const BlindPage({super.key});
+  BlindPage({Key? key}) : super(key: key);
 
   @override
   _BlindPageState createState() => _BlindPageState();
 }
 
 class _BlindPageState extends State<BlindPage> {
-  // This is where you initialize your state
+  bool _isElevated = true;
+  //final player = AudioCache();
   String? mtoken = '';
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -26,7 +43,7 @@ class _BlindPageState extends State<BlindPage> {
     super.initState();
     requestPermission();
     getToken();
-    initInfo();
+    //initInfo();
   }
 
   void requestPermission() async {
@@ -52,10 +69,7 @@ class _BlindPageState extends State<BlindPage> {
   }
 
   void saveToken(String? token) async {
-    await FirebaseFirestore.instance
-        .collection("UserTokens")
-        .doc("Voulunteer1")
-        .set({
+    await FirebaseFirestore.instance.collection("UserTokens").doc("Blind").set({
       "token": token,
     });
     print(token);
@@ -131,25 +145,67 @@ class _BlindPageState extends State<BlindPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Blind Page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            // Define what the button does when it gets pressed
-            DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
-                .collection("UserTokens")
-                .doc("Voulunteer1")
-                .get();
-            String token = documentSnapshot['token'];
-            print(token);
-            sendPushMessage(token, "Help me!", "Blind Person");
-          },
-          child: const Text('Get Help!'),
-        ),
-      ),
-      //home: BlindPage(),
-    );
+        backgroundColor: Color.fromARGB(255, 196, 194, 210),
+        body: Center(
+            child: GestureDetector(
+                onTap: () async {
+                  setState(() {
+                    _isElevated = !_isElevated;
+                  });
+                  DocumentSnapshot documentSnapshot = await FirebaseFirestore
+                      .instance
+                      .collection("UserTokens")
+                      .doc("Voulunteer1")
+                      .get();
+                  String token = documentSnapshot['token'];
+                  print(token);
+                  sendPushMessage(token, "Help me!", "Blind Person");
+                },
+                child: Padding(
+                    padding: EdgeInsets.fromLTRB(55, 90, 50, 0),
+                    child: Container(
+                      height: 320,
+                      width: 320,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        shape: BoxShape.circle,
+                        boxShadow: _isElevated
+                            ? [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  offset: Offset(4, 4),
+                                  blurRadius: 15,
+                                  spreadRadius: 1,
+                                ),
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 196, 194, 210),
+                                  offset: Offset(-4, -4),
+                                  blurRadius: 15,
+                                  spreadRadius: 1,
+                                ),
+                              ]
+                            : null,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: GestureDetector(
+                          onTap: () {
+                            //player.load('audio/my-audio.wav');
+                            //player.play('audio/my-audio.wav');
+                          },
+                          child: Center(
+                            child: Text(
+                              !_isElevated ? 'Sent!' : 'Send Notification',
+                              // Button text
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.w700,
+                                color: const Color.fromARGB(255, 81, 81, 81),
+                              ), // Text style
+                            ),
+                          ),
+                        ),
+                      ),
+                    )))));
   }
 }

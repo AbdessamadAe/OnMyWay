@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 //TODO: HOMEPAGE
-import 'package:OnMyWay/LogInPage.dart';
+import 'package:OnMyWay/VolunteerPage.dart';
 import 'package:OnMyWay/BlindPage.dart';
 import 'package:flutter/material.dart';
 
@@ -14,16 +14,16 @@ class OnMyWay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Color.fromARGB(0, 160, 143, 254), // Set the desired button background color
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(
+                0, 160, 143, 254), // Set the desired button background color
+          ),
+        ),
       ),
-    ),
-  ),
-    home: MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -34,7 +34,14 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-
+    ThemeData(
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color.fromARGB(
+              0, 160, 143, 254), // Set the desired button background color
+        ),
+      ),
+    );
     return Scaffold(
       body: Container(
         height: screenSize.height,
@@ -131,30 +138,45 @@ class MyHomePage extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(17),
                         ),
+//8888888888888888888888888888888888888888 I need visual assistance 888888888888888888888888888888888888888888888888888888
+                        // screen reader implementation
                         child: Center(
-                          child: ElevatedButton(
-                            onPressed: () {
+                          child: Semantics(
+                            label: 'I need visual assistance button',
+                            button: true,
+                            onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      BlindPage(), // the Blind interface needs to be placed here
+                                  builder: (context) => BlindPage(),
                                 ),
                               );
                             },
-                            style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            ),
-                            child: Text(
-                              'I need visual assistance',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Inria Serif',
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                height: 1.1975,
-                                letterSpacing: 1.25,
-                                color: Color(0xff000000),
+                            //
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => BlindPage(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor: Color.fromARGB(0, 160, 143, 254),
+                              ),
+                              child: Text(
+                                'I need visual assistance',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Inria Serif',
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1.1975,
+                                  letterSpacing: 1.25,
+                                  color: Color(0xff000000),
+                                ),
                               ),
                             ),
                           ),
@@ -162,6 +184,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 12),
+//888888888888888888888888888888888888 I would like to volunteer button 8888888888888888888888888888888888888888888888888888888888
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
@@ -178,21 +201,29 @@ class MyHomePage extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(17),
                         ),
-                        child: Center(
+                        child: Semantics(
+                          label: 'I would like to volunteer button',
+                          button: true,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VolunteerPage(),
+                              ),
+                            );
+                          },
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.push(
-                                
                                 context,
-                                
                                 MaterialPageRoute(
-                                  
-                                  builder: (context) => LogInPage(),
+                                  builder: (context) => VolunteerPage(),
                                 ),
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                            elevation: 0, // Set elevation to 0 or adjust as needed
+                              elevation:0,
+                              backgroundColor: Color.fromARGB(0, 160, 143, 254), // Set elevation to 0 or adjust as needed
                             ),
                             child: Text(
                               'I would like to volunteer',
@@ -208,6 +239,7 @@ class MyHomePage extends StatelessWidget {
                             ),
                           ),
                         ),
+//8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
                       ),
                     ),
                     SizedBox(height: 0),

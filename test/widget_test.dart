@@ -7,10 +7,9 @@
 
 // ignore_for_file: unused_import
 
+import 'package:OnMyWay/ChoosePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:OnMyWay/ChoosePage.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

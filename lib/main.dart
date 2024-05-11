@@ -1,12 +1,28 @@
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'ChoosePage.dart';
 import 'VolunteerPage.dart';
 import 'Profile.dart';
 import 'BlindPage.dart';
 import 'LogInPage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> _forebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  debugPrint('Handling a background message: ${message.messageId}');
+}
+
+Future <void> main() async {
+  debugPrint('Starting app...');
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+    );
+  await FirebaseMessaging.instance.getInitialMessage();
+  FirebaseMessaging.onBackgroundMessage(_forebaseMessagingBackgroundHandler);
+  debugPrint('App started');
   runApp(const OnMyWay());
 }
 

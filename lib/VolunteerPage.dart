@@ -51,7 +51,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
 
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
-      announcement: false,
+      announcement: true,
       badge: true,
       carPlay: false,
       criticalAlert: false,
@@ -109,6 +109,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
           AndroidNotificationDetails('OnMyWay', 'OnMyWay',
               importance: Importance.max,
               priority: Priority.high,
+              //icon: "Assets/images/logo0.png",
               styleInformation: bigTextStyleInformation);
       NotificationDetails platformChannelSpecifics =
           NotificationDetails(android: androidPlatformChannelSpecifics);
@@ -198,10 +199,10 @@ class _VolunteerPageState extends State<VolunteerPage> {
                                   children: [
                                     Container(
                                       margin:
-                                          EdgeInsets.fromLTRB(26, 90, 32, 12),
+                                          EdgeInsets.fromLTRB(10, 90, 25, 12),
                                       // Adjust right margin for spacing between '# VOLUNTEERS' and '# BLIND'
                                       child: Text(
-                                        '# VOLUNTEERS',
+                                        '#28 VOLUNTEERS',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Quantico',
@@ -213,7 +214,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
                                       ),
                                     ),
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(0, 14, 40, 5),
+                                      margin: EdgeInsets.fromLTRB(0, 14, 35, 5),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(2),
                                         color: Color.fromARGB(255, 81, 69, 120),
@@ -223,9 +224,10 @@ class _VolunteerPageState extends State<VolunteerPage> {
                                           115, // Adjust the height as needed
                                     ),
                                     Container(
-                                      margin: EdgeInsets.fromLTRB(5, 90, 0, 12),
+                                      margin:
+                                          EdgeInsets.fromLTRB(0, 90, 20, 12),
                                       child: Text(
-                                        '# BLIND', //textAlign: TextAlign.center,
+                                        '# 4 BLINDS', //textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: 'Quantico',
                                           fontSize: 18,

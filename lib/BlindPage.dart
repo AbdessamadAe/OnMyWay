@@ -142,6 +142,15 @@ class _BlindPageState extends State<BlindPage> {
     }
   }
 
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,53 +168,66 @@ class _BlindPageState extends State<BlindPage> {
                       .get();
                   String token = documentSnapshot['token'];
                   print(token);
-                  sendPushMessage(token, "Help me!", "Blind Person");
+                  sendPushMessage(token, myController.text, "Rabie Imad");
                 },
                 child: Padding(
                     padding: EdgeInsets.fromLTRB(55, 90, 50, 0),
-                    child: Container(
-                      height: 320,
-                      width: 320,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        shape: BoxShape.circle,
-                        boxShadow: _isElevated
-                            ? [
-                                BoxShadow(
-                                  color: Colors.black,
-                                  offset: Offset(4, 4),
-                                  blurRadius: 15,
-                                  spreadRadius: 1,
-                                ),
-                                BoxShadow(
-                                  color: Color.fromARGB(255, 196, 194, 210),
-                                  offset: Offset(-4, -4),
-                                  blurRadius: 15,
-                                  spreadRadius: 1,
-                                ),
-                              ]
-                            : null,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(20),
-                        child: GestureDetector(
-                          onTap: () {
-                            //player.load('audio/my-audio.wav');
-                            //player.play('audio/my-audio.wav');
-                          },
-                          child: Center(
-                            child: Text(
-                              !_isElevated ? 'Sent!' : 'Send Notification',
-                              // Button text
-                              style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.w700,
-                                color: const Color.fromARGB(255, 81, 81, 81),
-                              ), // Text style
+                    child: Column(children: [
+                      Container(
+                        height: 320,
+                        width: 320,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          shape: BoxShape.circle,
+                          boxShadow: _isElevated
+                              ? [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    offset: Offset(4, 4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1,
+                                  ),
+                                  BoxShadow(
+                                    color: Color.fromARGB(255, 196, 194, 210),
+                                    offset: Offset(-4, -4),
+                                    blurRadius: 15,
+                                    spreadRadius: 1,
+                                  ),
+                                ]
+                              : null,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(20),
+                          child: GestureDetector(
+                            onTap: () {
+                              //player.load('audio/my-audio.wav');
+                              //player.play('audio/my-audio.wav');
+                            },
+                            child: Center(
+                              child: Text(
+                                !_isElevated ? 'Sent!' : 'Send Notification',
+                                // Button text
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color.fromARGB(255, 81, 81, 81),
+                                ), // Text style
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    )))));
+                      Container(
+                        child: TextField(
+                          scrollPadding: EdgeInsets.fromLTRB(55, 10, 50, 0),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(55, 40, 50, 0),
+                            border: UnderlineInputBorder(),
+                            labelText: 'Enter a message',
+                          ),
+                          controller: myController,
+                        ),
+                      )
+                    ])))));
   }
 }

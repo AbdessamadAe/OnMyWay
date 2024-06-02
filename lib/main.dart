@@ -1,12 +1,12 @@
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'ChoosePage.dart';
-import 'VolunteerPage.dart';
-import 'Profile.dart';
+
 import 'BlindPage.dart';
+import 'ChoosePage.dart';
 import 'LogInPage.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'Profile.dart';
+import 'VolunteerPage.dart';
 import 'firebase_options.dart';
 
 Future<void> _forebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -14,12 +14,10 @@ Future<void> _forebaseMessagingBackgroundHandler(RemoteMessage message) async {
   debugPrint('Handling a background message: ${message.messageId}');
 }
 
-Future <void> main() async {
+Future<void> main() async {
   debugPrint('Starting app...');
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform
-    );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseMessaging.instance.getInitialMessage();
   FirebaseMessaging.onBackgroundMessage(_forebaseMessagingBackgroundHandler);
   debugPrint('App started');
@@ -32,12 +30,11 @@ class OnMyWay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = User(
-      firstName: 'John',
-      lastName: 'Doe',
-      phoneNumber: '1234567890',
-      image: 'path/to/image.jpg',
-      email: 'j.Doe@aui.ma'
-    );
+        firstName: 'John',
+        lastName: 'Doe',
+        phoneNumber: '1234567890',
+        image: 'path/to/image.jpg',
+        email: 'j.Doe@aui.ma');
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'OnMyWay',
@@ -46,7 +43,7 @@ class OnMyWay extends StatelessWidget {
         '/': (context) => const MyHomePage(),
         '/second': (context) => const LogInPage(),
         '/third': (context) => const VolunteerPage(),
-        '/fourth': (context) =>  BlindPage(),
+        '/fourth': (context) => BlindPage(),
         '/fifth': (context) => ProfileScreen(user: user),
       },
       theme: ThemeData(
